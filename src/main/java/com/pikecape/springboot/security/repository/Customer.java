@@ -1,4 +1,4 @@
-package com.pikecape.springboot.security.model;
+package com.pikecape.springboot.security.repository;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +16,6 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String email;
-    private String pwd;
+    private String password;
     private String role;
 }

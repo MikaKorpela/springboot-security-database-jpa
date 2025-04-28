@@ -1,6 +1,6 @@
 package com.pikecape.springboot.security.configuration;
 
-import com.pikecape.springboot.security.model.Customer;
+import com.pikecape.springboot.security.repository.Customer;
 import com.pikecape.springboot.security.repository.CustomerRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         Customer customer = customerRepository.findByEmail(username).orElseThrow(() -> new
             UsernameNotFoundException("User details not found for the user: " + username));
         List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(customer.getRole()));
-        return new User(customer.getEmail(), customer.getPwd(), authorities);
+        return new User(customer.getEmail(), customer.getPassword(), authorities);
     }
 }
 
